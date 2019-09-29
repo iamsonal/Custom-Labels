@@ -1,0 +1,11 @@
+{
+  "packageDirectories": [
+    {
+      "path": "force-app",
+      "default": true
+    }
+  ],
+  "namespace": "",
+  "sfdcLoginUrl": "https://rodanandfields--stg3.cs40.my.salesforce.com",
+  "sourceApiVersion": "46.0"
+}
