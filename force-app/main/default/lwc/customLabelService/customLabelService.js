@@ -1,15 +1,22 @@
 import retrieveCustomLabels from "@salesforce/apex/CustomLabelController.retrieveCustomLabels";
 
+let _data = {};
+
 const getCustomLabels = (resourcePath = null) => {
   return new Promise(resolve => {
-    retrieveCustomLabels(resourcePath)
-      .then(data => {
-        let response = JSON.parse(data);
-        resolve(response);
-      })
-      .catch(error => {
-        resolve(error);
-      });
+    if (Object.entries(_data).length === 0) {
+      retrieveCustomLabels(resourcePath)
+        .then(data => {
+          let response = JSON.parse(data);
+          _data = response;
+          resolve(_data);
+        })
+        .catch(error => {
+          resolve(error);
+        });
+    } else {
+      resolve(_data);
+    }
   });
 };
 
